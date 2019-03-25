@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
-import {
-  Nav,
-  Navbar as RBNavbar,
-  NavItem
-} from 'react-bootstrap'
+
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
-  handleClick = (e) => {
-    this.props.history.push(`/page${e.target.id}`)
-  }
-
   render () {
     return (
-      <RBNavbar inverse collapseOnSelect>
-        <RBNavbar.Header>
-          <RBNavbar.Brand>
-            React App
-          </RBNavbar.Brand>
-          <RBNavbar.Toggle />
-        </RBNavbar.Header>
-        <RBNavbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} id={1} href='#' onClick={this.handleClick}>Page1</NavItem>
-            <NavItem eventKey={2} id={2} href='#' onClick={this.handleClick}>Page2</NavItem>
-          </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={3} id={3} href='#' onClick={this.handleClick}>Page3</NavItem>
-          </Nav>
-        </RBNavbar.Collapse>
-      </RBNavbar>
+      <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
+        <a className='navbar-brand abs' href='#'>React App</a>
+        <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#collapsingNavbar'>
+          <span className='navbar-toggler-icon' />
+        </button>
+        <div className='navbar-collapse collapse' id='collapsingNavbar'>
+          <ul className='navbar-nav'>
+            <li className='nav-item active'>
+              <Link className='nav-link' to='/page1'>Page 1</Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/page2'>Page 2</Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/page3'>Page 3</Link>
+            </li>
+          </ul>
+          <ul className='navbar-nav ml-auto'>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/page1'>Page 1 from the right</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
     )
   }
 }

@@ -1,41 +1,11 @@
 import React, { Component } from 'react'
-import Loader from 'react-loader'
 
-import {
-  Grid
-} from 'react-bootstrap'
-
-import {
-  Provider,
-  observer,
-  inject
-} from 'mobx-react'
-
-import {
-  Router,
-  Route,
-  Switch
-} from 'react-router-dom'
+import { Provider, observer, inject } from 'mobx-react'
+import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory as createHistory } from 'history'
+
 import store from '../store'
 import Navbar from './Navbar'
-
-const Spinner = () => {
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        zIndex: 9999
-      }}
-      className='container-wrapper'>
-      <Loader />
-    </div>
-  )
-}
 
 const Home = () => {
   return (
@@ -110,17 +80,12 @@ class App extends Component {
           <div>
             <Navbar history={this.history} />
 
-            <Grid>
-
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/page1' component={Page1} />
-                <Route path='/page2' component={Page2} />
-                <Route path='/page3' component={Page3} />
-              </Switch>
-
-              {store.isLoading ? <Spinner /> : null}
-            </Grid>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/page1' component={Page1} />
+              <Route path='/page2' component={Page2} />
+              <Route path='/page3' component={Page3} />
+            </Switch>
 
           </div>
         </Provider>
